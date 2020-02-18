@@ -1,0 +1,38 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand"> Person Details</a>
+ 
+<ng-container>
+   <button style="float: right;" *ngIf="!details" class="btn btn-primary" (click)="addperson()" >Add Person</button>
+  <button style="float: right;"  *ngIf="details" class="btn btn-primary" (click)="back()" >Back</button>
+ </ng-container>
+
+  </nav>
+
+
+<app-persondetails [selectedPerson]="selectedPerson" *ngIf="details"></app-persondetails>
+
+<div *ngIf="!details" class="card" style="background-color:whitesmoke;height:600px;">
+
+  
+
+  <div class="card-body">
+    
+    <br>
+    <div class="card" *ngFor="let person of persons">
+
+      <div class="card-body">
+        <h5 class="card-title">{{person.firstName}} {{person.lastName}}</h5>
+        <h6 class="card-subtitle mb-2 text-muted"><b>AGE :</b> {{person.age}} <br>
+        <b>Favourite Color : {{person.favouriteColor}} </b>
+        </h6>
+        <p class="card-text"><b>Hobbies :</b>  {{person.hobby}} 
+        </p>
+        
+        <a (click)="detailsforPeson(person)" style="color: rgb(0, 130, 236);" class="card-link">Edit Details</a>
+        <a (click)="delete(person)" style="color: red;" class="card-link">Delete</a>
+     
+      </div>
+    </div>
+  </div>
+
+</div>
